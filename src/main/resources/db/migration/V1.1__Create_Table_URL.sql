@@ -1,0 +1,11 @@
+DROP TABLE IF EXISTS url;
+
+CREATE TABLE IF NOT EXISTS url(
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    original_url VARCHAR(255) NOT NULL,
+    new_url VARCHAR(255) NOT NULL,
+    access_counter BIGINT DEFAULT 0,
+    creation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    last_access_date TIMESTAMP NULL,
+    PRIMARY KEY(id)
+    );
