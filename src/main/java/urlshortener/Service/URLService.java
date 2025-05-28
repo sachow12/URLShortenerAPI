@@ -18,6 +18,9 @@ public class URLService {
     @Autowired
     URLRepository urlRepository;
 
+    @Autowired
+    SafeBrowsingService safeBrowsingService;
+
     private static final String CHARACTER_LIST = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     private static final SecureRandom secureRandom = new SecureRandom();
 
@@ -35,6 +38,10 @@ public class URLService {
     public URLDTO shortenURL(URLDTO urlDTO){
         if(urlDTO == null || urlDTO.getOriginalUrl() == null || urlDTO.getOriginalUrl().isEmpty()) {
             throw new IllegalArgumentException("No URL provided to shorten.");
+        }
+
+        if(!safeBrowsingService.isURLSafe(urlDTO.getOriginalUrl())) {
+            throw new IllegalArgumentException("You should shame yourself.");
         }
 
         String newURL;
