@@ -11,7 +11,7 @@ import java.net.URI;
 
 @RestController
 @RequestMapping("/")
-@CrossOrigin(origins = "*") 
+@CrossOrigin(origins = " http://localhost:3000")
 public class URLController {
 
     @Autowired
