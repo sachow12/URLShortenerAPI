@@ -40,7 +40,7 @@ public class URLService {
             throw new IllegalArgumentException("No URL provided to shorten.");
         }
 
-        if(!safeBrowsingService.isURLSafe(urlDTO.getOriginalUrl())) {
+        if(safeBrowsingService.isInBlacklist(urlDTO.getOriginalUrl())) {
             throw new IllegalArgumentException("You should shame yourself.");
         }
 
